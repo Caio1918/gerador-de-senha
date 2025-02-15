@@ -1,3 +1,8 @@
+const { error } = require("console")
+const { response } = require("express")
+
+
+
 function randCharMin() {
     let num = Math.floor(Math.random() * 26) + 97
     return String.fromCharCode(num)
@@ -13,13 +18,7 @@ function choiceTri() {
 }
 
 
-function gerarSenha() {
-    let charMin = parseInt(document.getElementById('charMin').value) 
-    let charMai = parseInt(document.getElementById('charMai').value)
-    let num = parseInt(document.getElementById('num').value)
-    const retorno = document.getElementById('senha')
-    const mensagem = document.getElementById('mensagem')
-
+function gerarSenha(charMin, charMai, num) {
     let tamanho = charMin + charMai + num
     let senha = []
 
@@ -39,13 +38,8 @@ function gerarSenha() {
             i--
         }
     }
-
-    mensagem.innerHTML = 'Aqui está a sua senha:'
-    retorno.innerHTML = senha.join('')
-
-    document.getElementById('btn-copiar').style.display = 'block'
         
-    
+    return senha.join('')
 }
 
 
@@ -66,6 +60,38 @@ function copiar() {
             console.error(error)
         });
 
+}
+
+
+async function obterSenha() {
+    const protocolo = 'http://'
+    const baseURL = 'localhost:3000'
+
+    const charMin = parseInt(document.getElementById('charMin').value)
+    const charMai = parseInt(document.getElementById('charMai').value)
+    const num = parseInt(document.getElementById('num').value)
     
+    const retorno = document.getElementById('senha')
+    const mensagem = document.getElementById('mensagem')
+
+    const senhaEndPoint = '/senha'
+    const URLCompleta = `${protocolo}${baseURL}${senhaEndPoint}?charMin=${charMin}&charMai=${charMai}&num=${num}`
+    
+    console.log(URLCompleta)
+
+    await fetch(URLCompleta)
+        .then(res => res.json())
+        .then(data => {
+            mensagem.textContent = "Aqui está a sua senha: "
+            retorno.textContent = data.senha
+        })
+        .catch(error => console.error("Erro ao gerar senha: ", error))
+
+    document.getElementById('btn-copiar').style.display = 'block'
+}
+
+module.exports = {
+    gerarSenha,
+    copiar
 }
 
