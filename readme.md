@@ -1,49 +1,76 @@
-# Gerador de Senha
+# 🔑 Gerador de Senhas - API
 
-## Descrição
+## 📌 Descrição
 
-Este é um projeto desenvolvido utilizando **HTML** e **JavaScript**, com o objetivo de gerar senhas aleatórias conforme os parâmetros informados pelo usuário. O usuário pode definir a quantidade de caracteres **minúsculos**, **maiúsculos** e **números** desejados para compor a senha.
+Esta API gera uma senha aleatória com base na quantidade de caracteres minúsculos, maiúsculos e números especificados pelo usuário. O front-end envia esses parâmetros para a API, que retorna uma senha gerada dinamicamente.
 
-## Funcionalidades
+## 🎨 Demonstração
 
-- Permite ao usuário escolher a quantidade de caracteres minúsculos, maiúsculos e números.
-- Gera uma senha aleatória baseada nos valores informados.
-- Exibe a senha gerada de forma clara e legível.
-- Botão para **copiar** a senha gerada para a área de transferência.
+A interface do usuário permite inserir a quantidade desejada de caracteres de cada tipo e gerar uma senha com um clique. Veja abaixo um exemplo da interface:
 
-## Como Usar
+![Gerador de Senhas](assets/interface.png)
 
-1. Defina a quantidade de caracteres **minúsculos**, **maiúsculos** e **números** usando os campos numéricos.
-2. Clique no botão **"Gerar Senha"** para gerar uma nova senha aleatória.
-3. A senha será exibida abaixo do botão.
-4. Para copiar a senha gerada, clique no botão **"Copiar Senha"**.
+## 🚀 Tecnologias Utilizadas
 
-## Tecnologias Utilizadas
+- **🖥️ Back-end:** Node.js com Express
+- **🎨 Front-end:** JavaScript, HTML, Bootstrap
+- **🔐 Autenticação:** N/A (a API é pública neste momento)
+- **🛡️ Segurança:** Rate limiting, CORS
 
-- **HTML**
-- **Bootstrap** (para estilização básica)
-- **JavaScript** (para a lógica de geração de senhas)
+## ⚙️ Como Executar a API
 
-## Como Executar o Projeto
+1. 🛠️ Clone este repositório:
 
-1. Clone este repositório:
-   ```bash
+   ```sh
    git clone https://github.com/Caio1918/gerador-de-senha.git
    ```
-2. Abra o arquivo `index.html` em seu navegador.
-3. Utilize os controles para gerar e copiar senhas aleatórias.
 
-## Contribuição
+2. 📦 Instale as dependências:
 
-Sinta-se à vontade para contribuir com este projeto! Para isso:
+   ```sh
+   npm init -y
+   npm install express
+   npm install --dev-save nodemon
+   npm install cors
+   ```
 
-1. Fork o repositório.
-2. Crie uma nova branch (`git checkout -b minha-feature`).
-3. Faça suas modificações e commit (`git commit -m 'Adicionando nova funcionalidade'`).
-4. Envie um push para a branch (`git push origin minha-feature`).
-5. Abra um Pull Request.
+3. ▶️ Inicie o servidor:
 
----
+   ```sh
+   nodemon backend.js
+   ```
 
-Feito por Caio Onha Ferreira.
+4. 🌍 A API estará rodando em: `http://localhost:3000`
+
+## 🔗 Endpoints
+
+### `GET /senha`
+
+**📌 Descrição:** Gera uma senha aleatória com base nos parâmetros fornecidos.
+
+**📩 Requisição:**
+
+```json
+{
+  "minusculas": 3,
+  "maiusculas": 3,
+  "numeros": 3
+}
+```
+
+**📤 Resposta:**
+
+```json
+{
+  "senha": "6DnG9j3Bj"
+}
+```
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.
+
+## 📜 Licença
+
+Este projeto está sob a licença MIT. Para mais detalhes, consulte o arquivo LICENSE.
 
