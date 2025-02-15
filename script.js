@@ -1,5 +1,7 @@
-const protocolo = 'http://'
-const baseURL = 'legendary-space-dollop-7ggj6g9w5pr3pr4g-3000.app.github.dev'
+const { error } = require("console")
+const { response } = require("express")
+
+
 
 function randCharMin() {
     let num = Math.floor(Math.random() * 26) + 97
@@ -62,28 +64,28 @@ function copiar() {
 
 
 async function obterSenha() {
+    const protocolo = 'http://'
+    const baseURL = 'localhost:3000'
 
     const charMin = parseInt(document.getElementById('charMin').value)
     const charMai = parseInt(document.getElementById('charMai').value)
     const num = parseInt(document.getElementById('num').value)
     
-
     const retorno = document.getElementById('senha')
     const mensagem = document.getElementById('mensagem')
 
     const senhaEndPoint = '/senha'
     const URLCompleta = `${protocolo}${baseURL}${senhaEndPoint}?charMin=${charMin}&charMai=${charMai}&num=${num}`
+    
     console.log(URLCompleta)
 
-    fetch(URLCompleta)
-        .then(response => response.json())
+    await fetch(URLCompleta)
+        .then(res => res.json())
         .then(data => {
-            mensagem.innerHTML = 'Aqui está a sua senha:'
-            retorno.innerHTML = data.senha
+            mensagem.textContent = "Aqui está a sua senha: "
+            retorno.textContent = data.senha
         })
-        .catch(error => {
-            console.error("Erro ao gerar senha!", error)
-        })
+        .catch(error => console.error("Erro ao gerar senha: ", error))
 
     document.getElementById('btn-copiar').style.display = 'block'
 }

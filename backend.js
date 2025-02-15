@@ -7,9 +7,11 @@ const app = express()
 const port = 3000
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
-app.get('/senha', (res, req) => {
+app.get('/senha', (req, res) => {
+
     let charMin = parseInt(req.query.charMin) 
     let charMai = parseInt(req.query.charMai)
     let num = parseInt(req.query.num)
@@ -25,7 +27,7 @@ app.get('/senha', (res, req) => {
 })
 
 
-app.get('/', (res, req) => {
+app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
