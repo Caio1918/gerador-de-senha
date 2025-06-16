@@ -1,0 +1,27 @@
+{
+  "name": "gerador-de-senha",
+  "version": "1.0.0",
+  "description": "Esta API gera uma senha aleatória com base na quantidade de caracteres minúsculos, maiúsculos e números especificados pelo usuário. O front-end envia esses parâmetros para a API, que retorna uma senha gerada dinamicamente.",
+  "main": "backend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon backend.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caio1918/gerador-de-senha.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Caio1918/gerador-de-senha/issues"
+  },
+  "homepage": "https://github.com/Caio1918/gerador-de-senha#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
