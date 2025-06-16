@@ -37,8 +37,9 @@ A interface do usuário permite inserir a quantidade desejada de caracteres de c
 3. ▶️ Inicie o servidor:
 
    ```sh
-   nodemon backend.js
+   npm run dev
    ```
+   A interface não roda junto com a API. Use a extensão live server do vs code ou abra o arquivo index.html no navegador.
 
 4. 🌍 A API estará rodando em: `http://localhost:3000`
 
